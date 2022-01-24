@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .center {
+	            position: absolute;
+	            width: 99%;
+	            height: 80%;
+	            top: 20%;
+	            text-align: center;
+            }
+            a:visited {
+                color : black;
+            }
+            body { min-height: 100vh; background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c)); background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%); background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%); background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%); background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%); } .input-form { max-width: 680px; margin-top: 80px; padding: 32px; background: #fff; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15) }
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body style="background-color: #F1EFEF">
+    <% if (url) { %>
+        <script>
+            let url = '<%=url%>'.replaceAll('&#34;', '"').replaceAll('&#39;', '\'');
+            location.href = url;
+        </script>
+    <% } %>
+    <br><br><br><a href='/'><h1 align='center' style="font-family: 'Amatic SC'; font-weight: 800; font-size: 72px; height: 12px;">Hello World!!</h1></a><br>
+    <div class="center">
+        <br><br>
+        <p style="font-family: 'Amatic SC'; font-weight: 600; font-size: 32px;">
+            <a href="/report" >Report</a> · 
+            <a href="/flag">Flag</a> · 
+            <a href="#" >Blog</a> · 
+        </p>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+    </body>
+</html>
