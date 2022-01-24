@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <script>
+            const Del = function (){
+                delete window['origin'];
+                console.log('[+] Delete origin');
+            }
+        </script>
+    </head>
+    <body>
+        <input type='button' onclick=Del() value='Delete origin'>
+        <a href='https://pocas.kr' id='origin'></a>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+(select 9999 id, enemy username from costume)
