@@ -1,0 +1,1 @@
+alert(top.document.domain)
