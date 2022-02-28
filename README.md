@@ -1,6 +1,49 @@
 ## Memo Service
 
 ---
+#### Apache2 -> HTTP to HTTPS
+
+```
+apt install snapd -y
+snap install --classic certbot
+certbot certonly --server https://acme-v02.api.letsencrypt.org/directory \\n--rsa-key-size 4096 --agree-tos --email <your email> --webroot -w /var/www/html \\n-d <domain>
+cp default-ssl.conf <domain>-ssl.conf
+a2enmod ssl
+a2enmod <domain>-ssl.conf
+service apache2 restart
+```
+```conf
+# <domain>-ssl.conf
+<IfModule mod_ssl.c>
+	<VirtualHost *:443> # * or your ip
+		ServerAdmin pocas.cyber@gmail.com
+        ServerName <domain>
+        ServerAlias <domain>
+
+		DocumentRoot /var/www/html
+
+
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+		SSLEngine on
+
+        SSLCertificateFile  /etc/letsencrypt/live/<domain>/cert.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/<domain>/privkey.pem
+        SSLCertificateChainFile /etc/letsencrypt/live/<domain>/chain.pem
+		<FilesMatch "\.(cgi|shtml|phtml|php)$">
+				SSLOptions +StdEnvVars
+		</FilesMatch>
+		<Directory /usr/lib/cgi-bin>
+				SSLOptions +StdEnvVars
+		</Directory>
+	</VirtualHost>
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
+
+---
 #### RSA shared key conflict
 
 ```
