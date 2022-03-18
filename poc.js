@@ -1,1 +1,0 @@
-alert(top.document.domain)
