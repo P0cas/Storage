@@ -1,0 +1,20 @@
+{
+    "name": "easyxss-v2",
+    "description": "challenge",
+    "main": "app.js",
+    "dependencies": {
+        "cookie-parser": "^1.4.5",
+        "crypto": "^1.0.1",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "nodemailer": "^6.7.2",
+        "nodemailer-smtp-transport": "^2.7.4",
+        "puppeteer": "^10.2.0",
+        "rand-token": "^1.0.1",
+        "sqlite3": "^5.0.2"
+    },
+    "scripts": {
+        "start": "node app.js"
+    }
+}
