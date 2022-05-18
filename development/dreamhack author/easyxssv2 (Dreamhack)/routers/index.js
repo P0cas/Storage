@@ -39,7 +39,7 @@ router.get('/sandbox', (req, res) => {
 
 router.post('/report', async (req, res) => {
     const { url } = req.body
-    const protocol_re = /^http\:|https\:|\//i;
+    const protocol_re = /^http\:|^https\:|^\//i;
 
     try{
         if (protocol_re.exec(url)){
